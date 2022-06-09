@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ingachi.mapper.ScoreMapper">
+
+    <resultMap id="scoreAndRanking" type="cn.ingachi.dto.StudentDto" autoMapping="true">
+        <id column="id" property="id"></id>
+        <result column="name" property="name"></result>
+        <collection property="scores" ofType="cn.ingachi.entity.Score" autoMapping="true">
+            <id column="scid" property="id"></id>
+            <result column="scname" property="name"></result>
+        </collection>
+    </resultMap>
+
+    <select id="getScoreAndRankingByIdStudentDto" resultMap="scoreAndRanking">
+        SELECT *
+        FROM (SELECT s.id,
+                     sex,
+                     s.name  AS name,
+                     age,
+                     cid,
+                     sc.id   AS scid,
+                     sc.name AS scname,
+                     sc.score,
+                     sc.sid,
+                     rank() OVER (PARTITION BY sc.name order by score DESC ) ranking
+              FROM student s,
+                   score sc,
+                   (SELECT cid id
+                    FROM student s
+                    WHERE s.id = #{id}) mycid
+              WHERE s.id = sc.sid
+                AND s.cid = mycid.id) allscore
+        where allscore.id = #{id};
+    </select>
+    <select id="getScoreMap" resultType="java.util.HashMap">
+        SELECT
+        count( CASE WHEN score >= 90 AND score <= 100 THEN id END ) AS "[90,100]",
+        count( CASE WHEN score >= 80 AND score <= 89 THEN id END ) AS "[80,89]",
+        count( CASE WHEN score >= 70 AND score <= 79 THEN id END ) AS "[70,79]",
+        count( CASE WHEN score >= 60 AND score <= 69 THEN id END ) AS "[60,69]",
+        count( CASE WHEN score < 60 THEN id END ) AS "<60"
+        FROM
+        (
+        SELECT
+        score.*
+        FROM
+        score ,
+        student s
+        WHERE
+        score.`name` = #{subjectName}
+        AND score.sid = s.id
+        AND s.cid = #{classId}
+        ) scores
+    </select>
+
+
+</mapper>

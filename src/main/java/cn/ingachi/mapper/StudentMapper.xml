@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.ingachi.mapper.StudentMapper">
+
+
+    <resultMap id="StudentDtoResultMap" type="cn.ingachi.dto.StudentDto" autoMapping="true">
+
+        <id property="id" column="sid"/>
+
+        <association property="major" javaType="cn.ingachi.entity.Major" autoMapping="true">
+            <id property="id" column="mid"/>
+            <result property="name" column="mname"/>
+        </association>
+
+        <association property="classes" javaType="cn.ingachi.entity.Classes" autoMapping="true">
+            <id property="id" column="cid"/>
+            <result property="className" column="class_name"/>
+        </association>
+
+        <association property="grade" javaType="cn.ingachi.entity.Grade" autoMapping="true">
+            <id property="id" column="gid"/>
+        </association>
+
+        <collection property="scores" ofType="cn.ingachi.entity.Score" autoMapping="true">
+            <id property="id" column="scid"/>
+            <result property="sid" column="sid"/>
+            <result property="name" column="sname"/>
+        </collection>
+
+    </resultMap>
+
+
+    <select id="getStudentDtoList" resultMap="StudentDtoResultMap">
+        SELECT s.sid,
+               sex,
+               s.NAME,
+               age,
+               cid,
+               class_name,
+               MID,
+               grade,
+               mname,
+               gid,
+               sc.id   scid,
+               sc.NAME sname,
+               sc.score
+        FROM (SELECT s.id     sid,
+                     s.sex    sex,
+                     s.`name` NAME,
+                     s.age    age,
+                     c.id     cid,
+                     c.class_name,
+                     m.id     MID,
+                     m.`name` mname,
+                     g.id     gid,
+                     g.grade
+              FROM student s,
+                   clas_grad cg,
+                   maj_grad mg,
+                   grade g,
+                   classes c,
+                   major m
+              where s.cid = c.id
+                AND c.id = cg.cid
+                AND cg.gid = mg.id
+                AND g.id = mg.gid
+                AND mg.mid = m.id) s
+                 LEFT JOIN score sc ON sc.sid = s.sid;
+    </select>
+
+    <select id="getStudentDtoById" resultMap="StudentDtoResultMap">
+        SELECT s.sid,
+               sex,
+               s.NAME,
+               age,
+               cid,
+               class_name,
+               MID,
+               grade,
+               mname,
+               gid,
+               sc.id   scid,
+               sc.NAME sname,
+               sc.score
+        FROM (SELECT s.id     sid,
+                     s.sex    sex,
+                     s.`name` NAME,
+                     s.age    age,
+                     c.id     cid,
+                     c.class_name,
+                     m.id     MID,
+                     m.`name` mname,
+                     g.id     gid,
+                     g.grade
+              FROM student s,
+                   clas_grad cg,
+                   maj_grad mg,
+                   grade g,
+                   classes c,
+                   major m
+              WHERE s.cid = c.id
+                AND c.id = cg.cid
+                AND cg.gid = mg.id
+                AND g.id = mg.gid
+                AND mg.mid = m.id) s
+                 LEFT JOIN score sc ON sc.sid = s.sid
+        WHERE s.sid = #{id};
+
+    </select>
+
+</mapper>

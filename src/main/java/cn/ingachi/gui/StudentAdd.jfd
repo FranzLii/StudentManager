@@ -1,0 +1,58 @@
+JFDML JFormDesigner: "7.0.5.4.420" Java: "11.0.15" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {space :0:68:x, par l {seq {comp label1:::p:59:p, space :::p, comp textField3:::p:196:p}, seq {comp label3:::p:59:p, space :6:6:p, comp textField1:::p:196:p}, seq {comp label4:::p:59:p, space :6:6:p, comp textField2:::p:196:p}, seq {comp label6:::p:59:p, space :6:6:p, comp comboBox1:::p:196:p}, seq {comp label5:::p:59:p, space :6:6:p, comp comboBox2:::p:196:p}, seq {space :103:103:p, comp button1:::p:105:p}}, space :0:69:x}}"
+			"$verticalGroup": "par l {seq {space :0:3:x, par l {seq t {comp label1:::p:37:p, space :6:6:p}, seq t {comp textField3:::p::p, space :::p}}, par l {comp label3:::p:37:p, seq {space :4:4:p, comp textField1:::p::p}}, space :6:6:p, par l {comp label4:::p:37:p, seq {space :4:4:p, comp textField2:::p::p}}, space :6:6:p, par l {comp label6:::p:37:p, seq {space :3:3:p, comp comboBox1:::p::p}}, space :6:6:p, par l {comp label5:::p:37:p, seq {space :3:3:p, comp comboBox2:::p::p}}, space :12:12:p, comp button1:::p:41:p, space :0:3:x}}"
+		} ) {
+			name: "this"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "学号:"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": "姓名:"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label4"
+				"text": "年龄"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label5"
+				"text": "班级"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField1"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField2"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label6"
+				"text": "性别"
+			} )
+			add( new FormComponent( "javax.swing.JComboBox" ) {
+				name: "comboBox1"
+			} )
+			add( new FormComponent( "javax.swing.JComboBox" ) {
+				name: "comboBox2"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button1"
+				"text": "保存"
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "button1MouseClicked", true ) )
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "button1MouseClicked", true ) )
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "button1MouseReleased", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField3"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 400, 300 )
+		} )
+	}
+}
