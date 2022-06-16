@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq l {par t {seq {space :p:51:p, comp label1:::p::p, space :::p, comp formattedTextField1:::p:71:p, space :p:8:p, comp label2:::p::p, space :::p, comp formattedTextField2:::p:73:p, space s:::p, comp label3:::p::p, space :::p, comp comboBox2:::p::p, space :p:40:p, comp label4:::p::p, space u:::p, comp comboBox1:::p::p, space :0:22:x}, seq {space ::20:x, comp scrollPane1:::p:557:p}}, par l {seq {space :p:93:p, par l {comp button1:::p:88:p, comp button2::l:p::p, comp button3::l:p::p, comp button5:::p::p, comp button6::l:p::p, comp button7::l:p::p}}, seq l {space :p:53:p, comp button4:::p:104:p}}, space :p:118:p}}"
-			"$verticalGroup": "par l {seq t {space :p:21:p, par b {comp comboBox2::b:p::p, comp label3::b:p::p, comp comboBox1::b:p::p, comp label4::b:p::p, comp button4::b:p:39:p, comp formattedTextField2::b:p::p, comp formattedTextField1::b:p::p, comp label1::b:p::p, comp label2::b:p::p}, space :14:34:x, par l {seq {comp button1:::p::p, space :::p, comp button2:::p::p, space :::p, comp button3:::p::p, space :::p, comp button5:::p::p, space :::p, comp button6:::p::p, space :::p, comp button7:::p::p}, comp scrollPane1:::p:311:p}, space :p:43:p}}"
+			"$horizontalGroup": "par l {seq l {par t {seq {space :p:51:p, comp label1:::p::p, space :::p, comp formattedTextField1:::p:71:p, space :p:8:p, comp label2:::p::p, space :::p, comp formattedTextField2:::p:73:p, space s:::p, comp label3:::p::p, space :::p, comp comboBox2:::p::p, space :p:40:p, comp label4:::p::p, space u:::p, comp comboBox1:::p::p, space :0:22:x}, seq {space ::20:x, comp scrollPane1:::p:557:p}}, par l {seq l {space :p:53:p, comp button4:::p:104:p}, seq l {space :p:68:p, par l {comp button1:::p:88:p, comp button2::l:p::p, comp button3::l:p::p, comp button5:::p::p, comp button6::l:p::p, comp button8::l:p::p, comp button9::l:p::p, comp button10::l:p::p}}}, space :p:143:p}, seq l {space :p:192:p, comp separator1:::p:200:p, space ::526:x}}"
+			"$verticalGroup": "par l {seq t {space :p:13:p, comp separator1:::p:23:p, space :::p, par b {comp comboBox2::b:p::p, comp label3::b:p::p, comp comboBox1::b:p::p, comp label4::b:p::p, comp button4::b:p:39:p, comp formattedTextField2::b:p::p, comp formattedTextField1::b:p::p, comp label1::b:p::p, comp label2::b:p::p}, space :14:13:x, par l {comp scrollPane1::l:p:311:p, seq l {comp button1:::p::p, space :::p, comp button2:::p::p, space :::p, comp button3:::p::p, space :::p, comp button5:::p::p, space :::p, comp button6:::p::p, space :p:29:p, comp button8:::p::p, space s:::p, comp button9:::p::p, space u:::p, comp button10:::p::p}}, space :p:31:p}}"
 		} ) {
 			name: "this"
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
@@ -90,12 +90,23 @@ new FormModel {
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "button1MouseClicked", true ) )
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "button6MouseReleased", true ) )
 			} )
+			add( new FormComponent( "javax.swing.JToolBar$Separator" ) {
+				name: "separator1"
+			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "button7"
+				name: "button8"
+				"text": "班级管理"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button9"
+				"text": "年级管理"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button10"
 				"text": "专业管理"
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 20, 25 )
+			"location": new java.awt.Point( 0, 0 )
 			"size": new java.awt.Dimension( 920, 480 )
 		} )
 	}

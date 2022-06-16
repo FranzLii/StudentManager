@@ -3,6 +3,36 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.ingachi.mapper.ClassesMapper">
+    <resultMap id="classesDtoResultMap" type="cn.ingachi.dto.ClassesDto" autoMapping="true">
+
+        <id property="id" column="id"></id>
+
+        <association property="grade" autoMapping="true" javaType="cn.ingachi.entity.Grade">
+            <id column="gid" property="id"></id>
+        </association>
+
+        <association property="major" autoMapping="true" javaType="cn.ingachi.entity.Major">
+            <id column="mid" property="id"></id>
+        </association>
+
+    </resultMap>
 
 
+    <select id="getClassesDtoList" resultMap="classesDtoResultMap">
+        SELECT c.id,
+               c.class_name,
+               g.id gid,
+               g.grade,
+               m.id mid,
+               m.name
+        FROM classes c,
+             clas_grad cg,
+             grade g,
+             maj_grad mg,
+             major m
+        WHERE c.id = cg.cid
+          AND cg.gid = g.id
+          AND g.id = mg.gid
+          AND mg.mid = m.id;
+    </select>
 </mapper>

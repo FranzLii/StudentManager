@@ -1,7 +1,10 @@
 package cn.ingachi.mapper;
 
+import cn.ingachi.dto.ClassesDto;
 import cn.ingachi.entity.Classes;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+
+import java.util.List;
 
 /**
 * @author maisann
@@ -10,7 +13,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 * @Entity cn.ingachi.entity.Classes
 */
 public interface ClassesMapper extends BaseMapper<Classes> {
-
+    List<ClassesDto> getClassesDtoList();
 }
 
 
