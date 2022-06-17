@@ -19,11 +19,13 @@ import org.springframework.stereotype.Component;
 
 
 import java.awt.*;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.swing.*;
 import javax.swing.GroupLayout;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -63,8 +65,21 @@ public class StudentManagerGui extends JFrame {
     public StudentManagerGui() {
         initComponents();
         setVisible(true);
+        setTimer(label6);
     }
 
+    private void setTimer(JLabel time){
+        final JLabel varTime = time;
+        Timer timeAction = new Timer(1000, new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                long timemillis = System.currentTimeMillis();
+//转换日期显示格式
+                SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                varTime.setText(df.format(new Date(timemillis)));
+            }
+        });
+        timeAction.start();
+    }
 
     public void initTable() {
 //        int i = 1 / 0;
@@ -257,6 +272,9 @@ public class StudentManagerGui extends JFrame {
         button8 = new JButton();
         button9 = new JButton();
         button10 = new JButton();
+        label5 = new JLabel();
+        label6 = new JLabel();
+        label7 = new JLabel();
 
         //======== this ========
         Container contentPane = getContentPane();
@@ -395,71 +413,91 @@ public class StudentManagerGui extends JFrame {
         //---- button10 ----
         button10.setText("\u4e13\u4e1a\u7ba1\u7406");
 
+        //---- label5 ----
+        label5.setText("\u5176\u4ed6\u4fe1\u606f\u7ba1\u7406:");
+        label5.setFont(new Font(Font.DIALOG, Font.PLAIN, 28));
+
+        //---- label6 ----
+        label6.setText("text");
+        label6.setFont(new Font(Font.DIALOG, Font.PLAIN, 22));
+
+        //---- label7 ----
+        label7.setText("\u5f53\u524d\u65f6\u95f4\uff1a");
+        label7.setFont(new Font(Font.DIALOG, Font.PLAIN, 22));
+
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
             contentPaneLayout.createParallelGroup()
                 .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                        .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addGap(51, 51, 51)
-                            .addComponent(label1)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(formattedTextField1, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
-                            .addGap(8, 8, 8)
-                            .addComponent(label2)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(formattedTextField2, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(label3)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(comboBox2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addGap(40, 40, 40)
-                            .addComponent(label4)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(comboBox1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 22, Short.MAX_VALUE))
-                        .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addContainerGap(20, Short.MAX_VALUE)
-                            .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 557, GroupLayout.PREFERRED_SIZE)))
+                    .addGap(51, 51, 51)
+                    .addComponent(label1)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(formattedTextField1, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
+                    .addGap(8, 8, 8)
+                    .addComponent(label2)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(formattedTextField2, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addComponent(label3)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(comboBox2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addGap(40, 40, 40)
+                    .addComponent(label4)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(comboBox1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 95, Short.MAX_VALUE)
+                    .addComponent(button4, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE)
+                    .addGap(211, 211, 211))
+                .addGroup(contentPaneLayout.createSequentialGroup()
                     .addGroup(contentPaneLayout.createParallelGroup()
                         .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addGap(53, 53, 53)
-                            .addComponent(button4, GroupLayout.PREFERRED_SIZE, 104, GroupLayout.PREFERRED_SIZE))
+                            .addGap(192, 192, 192)
+                            .addComponent(separator1, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE))
                         .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addGap(68, 68, 68)
+                            .addGap(51, 51, 51)
+                            .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 557, GroupLayout.PREFERRED_SIZE)
+                            .addGap(59, 59, 59)
                             .addGroup(contentPaneLayout.createParallelGroup()
                                 .addComponent(button1, GroupLayout.PREFERRED_SIZE, 88, GroupLayout.PREFERRED_SIZE)
                                 .addComponent(button2)
                                 .addComponent(button3)
                                 .addComponent(button5)
-                                .addComponent(button6)
-                                .addComponent(button8)
-                                .addComponent(button9)
-                                .addComponent(button10))))
-                    .addGap(143, 143, 143))
+                                .addComponent(button6))))
+                    .addContainerGap(192, Short.MAX_VALUE))
                 .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addGap(192, 192, 192)
-                    .addComponent(separator1, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(526, Short.MAX_VALUE))
+                    .addGroup(contentPaneLayout.createParallelGroup()
+                        .addGroup(contentPaneLayout.createSequentialGroup()
+                            .addGap(27, 27, 27)
+                            .addComponent(button8, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
+                            .addGap(26, 26, 26)
+                            .addComponent(button9, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(button10, GroupLayout.PREFERRED_SIZE, 125, GroupLayout.PREFERRED_SIZE))
+                        .addGroup(contentPaneLayout.createSequentialGroup()
+                            .addComponent(label5, GroupLayout.PREFERRED_SIZE, 191, GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 347, Short.MAX_VALUE)
+                            .addComponent(label7, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)))
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(label6, GroupLayout.PREFERRED_SIZE, 328, GroupLayout.PREFERRED_SIZE)
+                    .addGap(31, 31, 31))
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
                 .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
                     .addGap(13, 13, 13)
                     .addComponent(separator1, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(comboBox2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addComponent(label3)
                         .addComponent(comboBox1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addComponent(label4)
-                        .addComponent(button4, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
                         .addComponent(formattedTextField2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addComponent(formattedTextField1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                         .addComponent(label1)
-                        .addComponent(label2))
-                    .addGap(13, 13, Short.MAX_VALUE)
+                        .addComponent(label2)
+                        .addComponent(button4, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))
+                    .addGap(32, 32, 32)
                     .addGroup(contentPaneLayout.createParallelGroup()
                         .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 311, GroupLayout.PREFERRED_SIZE)
                         .addGroup(contentPaneLayout.createSequentialGroup()
@@ -471,14 +509,22 @@ public class StudentManagerGui extends JFrame {
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(button5)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(button6)
-                            .addGap(29, 29, 29)
-                            .addComponent(button8)
-                            .addGap(18, 18, 18)
-                            .addComponent(button9)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(button10)))
-                    .addGap(31, 31, 31))
+                            .addComponent(button6)))
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                    .addGroup(contentPaneLayout.createParallelGroup()
+                        .addGroup(contentPaneLayout.createSequentialGroup()
+                            .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                .addComponent(label7, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(label6, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED))
+                        .addGroup(GroupLayout.Alignment.TRAILING, contentPaneLayout.createSequentialGroup()
+                            .addComponent(label5, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
+                            .addGap(3, 3, 3)))
+                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(button8, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(button10, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+                        .addComponent(button9, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE))
+                    .addGap(21, 21, 21))
         );
         pack();
         setLocationRelativeTo(getOwner());
@@ -506,5 +552,8 @@ public class StudentManagerGui extends JFrame {
     private JButton button8;
     private JButton button9;
     private JButton button10;
+    private JLabel label5;
+    private JLabel label6;
+    private JLabel label7;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

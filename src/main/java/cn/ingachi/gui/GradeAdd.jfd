@@ -1,0 +1,40 @@
+JFDML JFormDesigner: "7.0.5.4.420" Java: "11.0.15" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq l {space :p:56:p, par t {par l {seq l {comp label3:::p:57:p, space :30:30:p, comp comboBox2:::p:181:p}, seq l {space :135:135:p, comp button1:::p:113:p}}, seq {comp label1:::p:69:p, space :18:18:p, comp textField1:::p:181:p}}, space ::124:x}}"
+			"$verticalGroup": "par l {seq l {space :p:63:p, par l {seq l {space :5:5:p, comp label1:::p::p}, comp textField1:::p::p}, space s:::p, par l {seq l {space :5:5:p, comp label3:::p::p}, comp comboBox2:::p::p}, space :34:34:p, comp button1:::p::p, space ::134:x}}"
+		} ) {
+			name: "this"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "年级名称"
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textField1"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": "专业"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button1"
+				"text": "添加"
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "button1MouseReleased", true ) )
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "button1MouseReleased", true ) )
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "button1MouseReleased", true ) )
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "button1MouseReleased", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JComboBox" ) {
+				name: "comboBox2"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "comboBox2", true ) )
+				addEvent( new FormEvent( "java.awt.event.ItemListener", "itemStateChanged", "comboBox2ItemStateChanged", true ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 450, 375 )
+		} )
+	}
+}

@@ -4,4 +4,24 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.ingachi.mapper.GradeMapper">
 
+    <resultMap id="GradeDtoResultMap" type="cn.ingachi.dto.GradeDto" autoMapping="true">
+        <association property="major" autoMapping="true">
+            <id column="mid" property="id"></id>
+        </association>
+    </resultMap>
+
+    <select id="getGradeDtoList" resultMap="GradeDtoResultMap">
+        SELECT
+            g.id,
+            g.grade,
+            m.id AS mid,
+            m.`name`
+        FROM
+            grade AS g,
+            maj_grad AS mg,
+            major AS m
+        WHERE
+            g.id = mg.gid AND
+            mg.mid = m.id;
+    </select>
 </mapper>

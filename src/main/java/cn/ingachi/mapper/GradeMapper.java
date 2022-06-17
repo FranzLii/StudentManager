@@ -1,7 +1,10 @@
 package cn.ingachi.mapper;
 
+import cn.ingachi.dto.GradeDto;
 import cn.ingachi.entity.Grade;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+
+import java.util.List;
 
 /**
 * @author maisann
@@ -10,6 +13,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 * @Entity cn.ingachi.entity.Grade
 */
 public interface GradeMapper extends BaseMapper<Grade> {
+    List<GradeDto> getGradeDtoList();
+
 
 }
 
