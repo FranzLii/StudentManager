@@ -25,7 +25,7 @@ import javax.swing.table.DefaultTableModel;
 public class MajorManager extends JFrame {
     public MajorManager() {
         initComponents();
-        setVisible(true);
+//        setVisible(true);
     }
 
     int selectedRows[] = {};

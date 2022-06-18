@@ -106,6 +106,7 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button10"
 				"text": "专业管理"
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "button10MouseReleased", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label5"

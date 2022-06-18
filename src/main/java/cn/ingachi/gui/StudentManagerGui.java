@@ -69,6 +69,9 @@ public class StudentManagerGui extends JFrame {
     private GradeManager gradeManager;
 
 
+    @Autowired
+    private MajorManager majorManager;
+
     public StudentManagerGui() {
         initComponents();
         setTimer(label6);
@@ -265,6 +268,11 @@ public class StudentManagerGui extends JFrame {
         gradeManager.initTable();
     }
 
+    private void button10MouseReleased(MouseEvent e) {
+        majorManager.setVisible(true);
+        majorManager.initTable();
+    }
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -440,6 +448,12 @@ public class StudentManagerGui extends JFrame {
 
         //---- button10 ----
         button10.setText("\u4e13\u4e1a\u7ba1\u7406");
+        button10.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                button10MouseReleased(e);
+            }
+        });
 
         //---- label5 ----
         label5.setText("\u5176\u4ed6\u4fe1\u606f\u7ba1\u7406:");
