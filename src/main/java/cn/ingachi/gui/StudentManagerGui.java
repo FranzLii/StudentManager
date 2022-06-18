@@ -8,6 +8,7 @@ import java.awt.event.*;
 
 
 import cn.ingachi.dto.StudentDto;
+import cn.ingachi.entity.Grade;
 import cn.ingachi.entity.Major;
 import cn.ingachi.service.MajorService;
 import cn.ingachi.service.StudentService;
@@ -61,10 +62,15 @@ public class StudentManagerGui extends JFrame {
     @Autowired
     private ScoreManager scoreManager;
 
+    @Autowired
+    private ClassesManager classesManager;
+
+    @Autowired
+    private GradeManager gradeManager;
+
 
     public StudentManagerGui() {
         initComponents();
-        setVisible(true);
         setTimer(label6);
     }
 
@@ -249,6 +255,16 @@ public class StudentManagerGui extends JFrame {
         }
     }
 
+    private void button8MouseReleased(MouseEvent e) {
+        classesManager.setVisible(true);
+        classesManager.initTable();
+    }
+
+    private void button9MouseReleased(MouseEvent e) {
+        gradeManager.setVisible(true);
+        gradeManager.initTable();
+    }
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -406,9 +422,21 @@ public class StudentManagerGui extends JFrame {
 
         //---- button8 ----
         button8.setText("\u73ed\u7ea7\u7ba1\u7406");
+        button8.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                button8MouseReleased(e);
+            }
+        });
 
         //---- button9 ----
         button9.setText("\u5e74\u7ea7\u7ba1\u7406");
+        button9.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                button9MouseReleased(e);
+            }
+        });
 
         //---- button10 ----
         button10.setText("\u4e13\u4e1a\u7ba1\u7406");

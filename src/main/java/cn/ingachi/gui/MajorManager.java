@@ -1,17 +1,17 @@
 /*
- * Created by JFormDesigner on Fri Jun 17 09:35:54 CST 2022
+ * Created by JFormDesigner on Sat Jun 18 09:16:18 CST 2022
  */
 
 package cn.ingachi.gui;
 
 import cn.ingachi.dto.GradeDto;
-import cn.ingachi.service.GradeService;
+import cn.ingachi.entity.Major;
+import cn.ingachi.service.MajorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.io.Serializable;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.*;
@@ -22,36 +22,33 @@ import javax.swing.table.DefaultTableModel;
  * @author unknown
  */
 @Component
-public class GradeManager extends JFrame {
-    public GradeManager() {
+public class MajorManager extends JFrame {
+    public MajorManager() {
         initComponents();
-//        setVisible(true);
+        setVisible(true);
     }
-
-    @Autowired
-    GradeAdd gradeAdd;
 
     int selectedRows[] = {};
 
+    @Autowired
+    MajorService majorService;
 
     @Autowired
-    private GradeService gradeService;
+    MajorAdd majorAdd;
 
     public void initTable() {
-        List<GradeDto> gradeDtoList = gradeService.getGradeDtoList();
+        List<Major> list = majorService.list();
         Vector columnNames = new Vector();
         Vector rowData = new Vector();
         scrollPane1 = new JScrollPane();
         columnNames = new Vector<>();
-        columnNames.add("年级id");
-        columnNames.add("年级");
-        columnNames.add("专业");
-        System.out.println(gradeDtoList);
-        for (GradeDto gradeDto : gradeDtoList) {
+        columnNames.add("专业id");
+        columnNames.add("专业名称");
+        System.out.println(list);
+        for (Major major : list) {
             Vector<java.io.Serializable> row = new Vector<>();
-            row.add(gradeDto.getId());
-            row.add(gradeDto.getGrade());
-            row.add(gradeDto.getMajor().getName());
+            row.add(major.getId());
+            row.add(major.getName());
             rowData.add(row);
         }
         table1.setModel(new DefaultTableModel(rowData, columnNames) {
@@ -59,28 +56,26 @@ public class GradeManager extends JFrame {
                 return false;
             }
         });
-
-    }
-
-
-    private void button1MouseReleased(MouseEvent e) {
-        initTable();    
     }
 
     private void table1MouseReleased(MouseEvent e) {
         selectedRows = table1.getSelectedRows();
     }
 
-    private void button5MouseReleased(MouseEvent e) {
-        for (int selectedRow : selectedRows) {
-            gradeService.removeById((Serializable) table1.getValueAt(selectedRow, 0));
-        }
+    private void button1MouseReleased(MouseEvent e) {
         initTable();
     }
 
     private void button2MouseReleased(MouseEvent e) {
-        gradeAdd.setVisible(true);
-        gradeAdd.initCcb();
+        majorAdd.setVisible(true);
+    }
+
+    private void button5MouseReleased(MouseEvent e) {
+        for (int selectedRow : selectedRows) {
+            majorService.removeById(Long.valueOf(table1.getValueAt(selectedRow, 0).toString()));
+//            log.warn("删除 =====>" + Long.valueOf(table1.getValueAt(selectedRow, 0).toString()));
+        }
+        initTable();
     }
 
     private void initComponents() {
@@ -117,7 +112,7 @@ public class GradeManager extends JFrame {
         });
 
         //---- button2 ----
-        button2.setText("\u6dfb\u52a0\u5e74\u7ea7\u4fe1\u606f");
+        button2.setText("\u6dfb\u52a0\u4e13\u4e1a\u4fe1\u606f");
         button2.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
@@ -127,7 +122,7 @@ public class GradeManager extends JFrame {
         });
 
         //---- button5 ----
-        button5.setText("\u5220\u9664\u9009\u4e2d\u5e74\u7ea7\u4fe1\u606f");
+        button5.setText("\u5220\u9664\u9009\u4e2d\u4e13\u4e1a\u4fe1\u606f");
         button5.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
@@ -141,31 +136,34 @@ public class GradeManager extends JFrame {
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
             contentPaneLayout.createParallelGroup()
-                .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addGap(26, 26, 26)
-                    .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 509, GroupLayout.PREFERRED_SIZE)
-                    .addGap(71, 71, 71)
-                    .addGroup(contentPaneLayout.createParallelGroup()
-                        .addComponent(button1, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(button2, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
-                        .addComponent(button5))
-                    .addContainerGap(148, Short.MAX_VALUE))
+                .addGroup(contentPaneLayout.createParallelGroup()
+                    .addGroup(contentPaneLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 509, GroupLayout.PREFERRED_SIZE)
+                        .addGap(71, 71, 71)
+                        .addGroup(contentPaneLayout.createParallelGroup()
+                            .addComponent(button1, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button2, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(button5))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(0, 878, Short.MAX_VALUE)
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
-                .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addGroup(contentPaneLayout.createParallelGroup()
-                        .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addGap(48, 48, 48)
-                            .addComponent(button1, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(button2, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(button5, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE))
-                        .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addGap(25, 25, 25)
-                            .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(98, Short.MAX_VALUE))
+                .addGroup(contentPaneLayout.createParallelGroup()
+                    .addGroup(contentPaneLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(contentPaneLayout.createParallelGroup()
+                            .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 427, GroupLayout.PREFERRED_SIZE)
+                            .addGroup(contentPaneLayout.createSequentialGroup()
+                                .addGap(23, 23, 23)
+                                .addComponent(button1, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
+                                .addComponent(button2, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
+                                .addComponent(button5, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(0, 495, Short.MAX_VALUE)
         );
         pack();
         setLocationRelativeTo(getOwner());

@@ -49,6 +49,7 @@ public class StudentAdd extends JFrame {
 
 
     public void initcombox() {
+        comboBox2selectitems.clear();
         comboBox1.setModel(new DefaultComboBoxModel(comboBox1selectitems));
         comboBox2selectitems.addAll(classesService.list().stream().map(Classes::getClassName).collect(Collectors.toList()));
         comboBox2.setModel(new DefaultComboBoxModel(comboBox2selectitems.toArray(new String[0])));
@@ -119,7 +120,6 @@ public class StudentAdd extends JFrame {
         button1.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                button1MouseClicked(e);
                 button1MouseClicked(e);
             }
 

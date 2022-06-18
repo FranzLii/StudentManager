@@ -39,7 +39,7 @@ public class ClassesManager extends JFrame {
 
     public ClassesManager() {
         initComponents();
-        setVisible(true);
+//        setVisible(true);
     }
 
 

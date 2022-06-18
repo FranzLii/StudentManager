@@ -7,9 +7,7 @@
 /dataSources/
 /dataSources.local.xml
 ../target/
-
 ../src/test/
-
 ../BooksManager.iml
-
+/mybatisx/
 

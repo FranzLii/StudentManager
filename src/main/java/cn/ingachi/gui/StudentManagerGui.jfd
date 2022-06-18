@@ -96,10 +96,12 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button8"
 				"text": "班级管理"
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "button8MouseReleased", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button9"
 				"text": "年级管理"
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "button9MouseReleased", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button10"
