@@ -62,14 +62,15 @@ public class ScoreManager extends JFrame {
 
         StudentDto studentDtoById = scoreService.getStudentScoreAndRankingById(id);
         Vector rowData = new Vector();
-
-        for (Score score : studentDtoById.getScores()) {
-            Vector<Serializable> row = new Vector<>();
-            row.add(score.getId());
-            row.add(score.getName());
-            row.add(score.getScore());
-            row.add(score.getRanking());
-            rowData.add(row);
+        if (studentDtoById!=null){
+            for (Score score : studentDtoById.getScores()) {
+                Vector<Serializable> row = new Vector<>();
+                row.add(score.getId());
+                row.add(score.getName());
+                row.add(score.getScore());
+                row.add(score.getRanking());
+                rowData.add(row);
+            }
         }
 
         table1.getTableHeader().setReorderingAllowed(false);

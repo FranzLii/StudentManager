@@ -66,13 +66,11 @@ public class StudentAdd extends JFrame {
             student.setName(textField1.getText());
             student.setAge(Integer.valueOf(textField2.getText()));
             student.setSex((String) comboBox1.getSelectedItem());
-
             String classesName = (String) comboBox2.getSelectedItem();
             LambdaQueryWrapper<Classes> queryWrapper = new LambdaQueryWrapper<>();
             queryWrapper.eq(Classes::getClassName, classesName);
             Classes one = classesService.getOne(queryWrapper);
             Integer cid = one.getId();
-
             student.setCid(cid);
             studentService.save(student);
             studentManagerGui.initTable();

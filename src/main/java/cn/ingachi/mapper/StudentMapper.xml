@@ -64,7 +64,7 @@
                    major m
               where s.cid = c.id
                 AND c.id = cg.cid
-                AND cg.gid = mg.id
+                AND cg.gid = g.id
                 AND g.id = mg.gid
                 AND mg.mid = m.id) s
                  LEFT JOIN score sc ON sc.sid = s.sid;
@@ -102,7 +102,7 @@
                    major m
               WHERE s.cid = c.id
                 AND c.id = cg.cid
-                AND cg.gid = mg.id
+                AND cg.gid = g.id
                 AND g.id = mg.gid
                 AND mg.mid = m.id) s
                  LEFT JOIN score sc ON sc.sid = s.sid
