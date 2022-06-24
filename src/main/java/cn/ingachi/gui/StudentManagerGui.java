@@ -8,7 +8,6 @@ import java.awt.event.*;
 
 
 import cn.ingachi.dto.StudentDto;
-import cn.ingachi.entity.Grade;
 import cn.ingachi.entity.Major;
 import cn.ingachi.service.MajorService;
 import cn.ingachi.service.StudentService;
@@ -34,6 +33,7 @@ import javax.swing.table.DefaultTableModel;
  */
 @Component
 @Slf4j
+@SuppressWarnings("all")
 public class StudentManagerGui extends JFrame {
 
 
@@ -72,12 +72,17 @@ public class StudentManagerGui extends JFrame {
     @Autowired
     private MajorManager majorManager;
 
+
+    @Autowired
+    private StudentScoreMap studentScoreMap;
+
+
     public StudentManagerGui() {
         initComponents();
         setTimer(label6);
     }
 
-    private void setTimer(JLabel time){
+    private void setTimer(JLabel time) {
         final JLabel varTime = time;
         Timer timeAction = new Timer(1000, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -194,7 +199,7 @@ public class StudentManagerGui extends JFrame {
                     continue;
                 }
             }
-            if (name!= null && name.length() != 0) {
+            if (name != null && name.length() != 0) {
                 if (!student.getName().contains(name)) {
                     continue;
                 }
@@ -273,6 +278,11 @@ public class StudentManagerGui extends JFrame {
         majorManager.initTable();
     }
 
+    private void button7MouseClicked(MouseEvent e) {
+        studentScoreMap.setVisible(true);
+        studentScoreMap.initcombox1();
+    }
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -299,6 +309,7 @@ public class StudentManagerGui extends JFrame {
         label5 = new JLabel();
         label6 = new JLabel();
         label7 = new JLabel();
+        button7 = new JButton();
 
         //======== this ========
         Container contentPane = getContentPane();
@@ -330,13 +341,11 @@ public class StudentManagerGui extends JFrame {
             @Override
             public void keyPressed(KeyEvent e) {
                 button1KeyPressed(e);
-                button1KeyPressed(e);
             }
         });
         button1.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                button1MouseClicked(e);
                 button1MouseClicked(e);
             }
         });
@@ -346,7 +355,6 @@ public class StudentManagerGui extends JFrame {
         button2.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                button2MouseClicked(e);
                 button2MouseClicked(e);
                 button1MouseClicked(e);
             }
@@ -358,10 +366,7 @@ public class StudentManagerGui extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 button3MouseClicked(e);
-                button3MouseClicked(e);
-                button3MouseClicked(e);
                 button1MouseClicked(e);
-                button3MouseClicked(e);
             }
         });
 
@@ -405,7 +410,6 @@ public class StudentManagerGui extends JFrame {
         button5.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                button5MouseClicked(e);
                 button1MouseClicked(e);
             }
             @Override
@@ -423,7 +427,6 @@ public class StudentManagerGui extends JFrame {
             }
             @Override
             public void mouseReleased(MouseEvent e) {
-                button6MouseReleased(e);
                 button6MouseReleased(e);
             }
         });
@@ -467,6 +470,15 @@ public class StudentManagerGui extends JFrame {
         label7.setText("\u5f53\u524d\u65f6\u95f4\uff1a");
         label7.setFont(new Font(Font.DIALOG, Font.PLAIN, 22));
 
+        //---- button7 ----
+        button7.setText("\u5b66\u751f\u6210\u7ee9\u5206\u5e03\u67e5\u8be2");
+        button7.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                button7MouseClicked(e);
+            }
+        });
+
         GroupLayout contentPaneLayout = new GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
@@ -505,7 +517,8 @@ public class StudentManagerGui extends JFrame {
                                 .addComponent(button2)
                                 .addComponent(button3)
                                 .addComponent(button5)
-                                .addComponent(button6))))
+                                .addComponent(button6)
+                                .addComponent(button7))))
                     .addContainerGap(192, Short.MAX_VALUE))
                 .addGroup(contentPaneLayout.createSequentialGroup()
                     .addGroup(contentPaneLayout.createParallelGroup()
@@ -551,7 +564,9 @@ public class StudentManagerGui extends JFrame {
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(button5)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(button6)))
+                            .addComponent(button6)
+                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(button7)))
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                     .addGroup(contentPaneLayout.createParallelGroup()
                         .addGroup(contentPaneLayout.createSequentialGroup()
@@ -597,5 +612,6 @@ public class StudentManagerGui extends JFrame {
     private JLabel label5;
     private JLabel label6;
     private JLabel label7;
+    private JButton button7;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

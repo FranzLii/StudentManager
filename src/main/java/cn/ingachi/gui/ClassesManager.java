@@ -146,7 +146,6 @@ public class ClassesManager extends JFrame {
             @Override
             public void mouseReleased(MouseEvent e) {
                 button3MouseReleased(e);
-                button3MouseReleased(e);
             }
         });
 

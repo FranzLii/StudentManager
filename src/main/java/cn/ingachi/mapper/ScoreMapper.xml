@@ -48,5 +48,18 @@
                 AND s.cid = #{classId}) scores
     </select>
 
+    <select id="getScoreNamesByClassId" resultType="java.lang.String">
+
+        SELECT
+            DISTINCT	sc.name
+        FROM
+            student s,
+            score sc
+        WHERE
+            s.cid = #{id}
+          AND
+            s.id = sc.sid;
+    </select>
+
 
 </mapper>

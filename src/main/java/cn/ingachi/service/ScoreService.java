@@ -16,4 +16,7 @@ import java.util.Map;
 public interface ScoreService extends IService<Score> {
     StudentDto getStudentScoreAndRankingById(Integer id);
     List<Map<String,Object>> getScoreMap(String subjectName,Integer classId);
+
+    List<String> getScoreNamesByClassId(Integer id);
+
 }

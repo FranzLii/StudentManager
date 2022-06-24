@@ -55,7 +55,6 @@ public class MajorAdd extends JFrame {
             @Override
             public void mouseReleased(MouseEvent e) {
                 button1MouseReleased(e);
-                button1MouseReleased(e);
             }
         });
 

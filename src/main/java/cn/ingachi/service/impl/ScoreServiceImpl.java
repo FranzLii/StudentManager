@@ -33,6 +33,11 @@ public class ScoreServiceImpl extends ServiceImpl<ScoreMapper, Score>
     public List<Map<String, Object>> getScoreMap(String subjectName, Integer classId) {
         return scoreMapper.getScoreMap(subjectName,classId);
     }
+
+    @Override
+    public List<String> getScoreNamesByClassId(Integer id) {
+        return scoreMapper.getScoreNamesByClassId(id);
+    }
 }
 
 

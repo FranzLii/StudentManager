@@ -22,6 +22,7 @@ public interface ScoreMapper extends BaseMapper<Score> {
 
     List<Map<String,Object>> getScoreMap(@Param("subjectName") String subjectName,@Param("classId") Integer classId);
 
+    List<String> getScoreNamesByClassId(Integer id);
 }
 
 

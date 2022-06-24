@@ -133,7 +133,6 @@ public class GradeManager extends JFrame {
             public void mouseReleased(MouseEvent e) {
                 button1MouseReleased(e);
                 button5MouseReleased(e);
-                button5MouseReleased(e);
             }
         });
 

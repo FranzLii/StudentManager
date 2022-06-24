@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq l {space :p:51:p, comp label1:::p::p, space :::p, comp formattedTextField1:::p:71:p, space :p:8:p, comp label2:::p::p, space :::p, comp formattedTextField2:::p:73:p, space s:::p, comp label3:::p::p, space :::p, comp comboBox2:::p::p, space :p:40:p, comp label4:::p::p, space u:::p, comp comboBox1:::p::p, space :0:95:x, comp button4:::p:104:p, space :p:211:p}, seq {par l {seq l {space :p:192:p, comp separator1:::p:200:p}, seq l {space :p:51:p, comp scrollPane1:::p:557:p, space :p:59:p, par l {comp button1:::p:88:p, comp button2::l:p::p, comp button3::l:p::p, comp button5:::p::p, comp button6::l:p::p}}}, space ::192:x}, seq l {par l {seq l {space :p:27:p, comp button8:::p:125:p, space :p:26:p, comp button9:::p:125:p, space s:::p, comp button10:::p:125:p}, seq l {comp label5:::p:191:p, space ::347:x, comp label7:::p:110:p}}, space :::p, comp label6:::p:328:p, space :p:31:p}}"
-			"$verticalGroup": "par l {seq t {space :p:13:p, comp separator1:::p:23:p, par b {comp comboBox2::b:p::p, comp label3::b:p::p, comp comboBox1::b:p::p, comp label4::b:p::p, comp formattedTextField2::b:p::p, comp formattedTextField1::b:p::p, comp label1::b:p::p, comp label2::b:p::p, comp button4::b:p:39:p}, space :p:32:p, par l {comp scrollPane1::l:p:311:p, seq l {comp button1:::p::p, space :::p, comp button2:::p::p, space :::p, comp button3:::p::p, space :::p, comp button5:::p::p, space :::p, comp button6:::p::p}}, space ::33:x, par l {seq {par b {comp label7::b:p:68:p, comp label6::b:p:76:p}, space u:::p}, seq t {comp label5:::p:44:p, space :p:3:p}}, par b {comp button8::b:p:40:p, comp button10::b:p:40:p, comp button9::b:p:40:p}, space :p:21:p}}"
+			"$horizontalGroup": "par l {seq l {space :p:51:p, comp label1:::p::p, space :::p, comp formattedTextField1:::p:71:p, space :p:8:p, comp label2:::p::p, space :::p, comp formattedTextField2:::p:73:p, space s:::p, comp label3:::p::p, space :::p, comp comboBox2:::p::p, space :p:40:p, comp label4:::p::p, space u:::p, comp comboBox1:::p::p, space :0:95:x, comp button4:::p:104:p, space :p:211:p}, seq {par l {seq l {space :p:192:p, comp separator1:::p:200:p}, seq l {space :p:51:p, comp scrollPane1:::p:557:p, space :p:59:p, par l {comp button1:::p:88:p, comp button2::l:p::p, comp button3::l:p::p, comp button5:::p::p, comp button6::l:p::p, comp button7:::p::p}}}, space ::192:x}, seq l {par l {seq l {space :p:27:p, comp button8:::p:125:p, space :p:26:p, comp button9:::p:125:p, space s:::p, comp button10:::p:125:p}, seq l {comp label5:::p:191:p, space ::347:x, comp label7:::p:110:p}}, space :::p, comp label6:::p:328:p, space :p:31:p}}"
+			"$verticalGroup": "par l {seq t {space :p:13:p, comp separator1:::p:23:p, par b {comp comboBox2::b:p::p, comp label3::b:p::p, comp comboBox1::b:p::p, comp label4::b:p::p, comp formattedTextField2::b:p::p, comp formattedTextField1::b:p::p, comp label1::b:p::p, comp label2::b:p::p, comp button4::b:p:39:p}, space :p:32:p, par l {comp scrollPane1::l:p:311:p, seq l {comp button1:::p::p, space :::p, comp button2:::p::p, space :::p, comp button3:::p::p, space :::p, comp button5:::p::p, space :::p, comp button6:::p::p, space u:::p, comp button7:::p::p}}, space ::33:x, par l {seq {par b {comp label7::b:p:68:p, comp label6::b:p:76:p}, space u:::p}, seq t {comp label5:::p:44:p, space :p:3:p}}, par b {comp button8::b:p:40:p, comp button10::b:p:40:p, comp button9::b:p:40:p}, space :p:21:p}}"
 		} ) {
 			name: "this"
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
@@ -21,14 +21,11 @@ new FormModel {
 				name: "button1"
 				"text": "刷新信息"
 				addEvent( new FormEvent( "java.awt.event.KeyListener", "keyPressed", "button1KeyPressed", true ) )
-				addEvent( new FormEvent( "java.awt.event.KeyListener", "keyPressed", "button1KeyPressed", true ) )
-				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "button1MouseClicked", true ) )
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "button1MouseClicked", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button2"
 				"text": "删除选中学生"
-				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "button2MouseClicked", true ) )
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "button2MouseClicked", true ) )
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "button1MouseClicked", true ) )
 			} )
@@ -36,10 +33,7 @@ new FormModel {
 				name: "button3"
 				"text": "添加学生信息"
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "button3MouseClicked", true ) )
-				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "button3MouseClicked", true ) )
-				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "button3MouseClicked", true ) )
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "button1MouseClicked", true ) )
-				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "button3MouseClicked", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button4"
@@ -80,7 +74,6 @@ new FormModel {
 				name: "button5"
 				"text": "修改选中学生信息"
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "button5MouseReleased", true ) )
-				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "button5MouseClicked", true ) )
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "button1MouseClicked", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
@@ -88,7 +81,6 @@ new FormModel {
 				"text": "查看选中学生成绩"
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "button6MouseReleased", true ) )
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "button1MouseClicked", true ) )
-				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "button6MouseReleased", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JToolBar$Separator" ) {
 				name: "separator1"
@@ -122,6 +114,11 @@ new FormModel {
 				name: "label7"
 				"text": "当前时间："
 				"font": new java.awt.Font( "Dialog", 0, 22 )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button7"
+				"text": "学生成绩分布查询"
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "button7MouseClicked", true ) )
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )

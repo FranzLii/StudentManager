@@ -29,7 +29,6 @@ new FormModel {
 				name: "button3"
 				"text": "删除选中班级"
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "button3MouseReleased", true ) )
-				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "button3MouseReleased", true ) )
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
