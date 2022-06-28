@@ -25,7 +25,7 @@ import javax.swing.GroupLayout;
 public class LoginGui extends JFrame {
 
 
-    @Autowired
+    @Autowired//依赖注入，通过spring框架实现控制反转
     ManagerService managerService;
 
     @Autowired
@@ -33,9 +33,6 @@ public class LoginGui extends JFrame {
 
     public LoginGui() {
         initComponents();
-        log.warn("LoginGui init");
-        log.warn("managerServuce is null ?" + Objects.isNull(managerService));
-        log.warn("studentManagerGui is null ?" + Objects.isNull(studentManagerGui));
         this.setVisible(true);
     }
 
@@ -45,11 +42,12 @@ public class LoginGui extends JFrame {
             Manager loginManager = new Manager();
             loginManager.setUserName(textField1.getText());
             loginManager.setPassword(String.valueOf(passwordField1.getPassword()));
-
+            //构造查询条件
             LambdaQueryWrapper<Manager> queryWrapper = new LambdaQueryWrapper<>();
             queryWrapper.eq(Manager::getUserName,loginManager.getUserName());
             queryWrapper.eq(Manager::getPassword,loginManager.getPassword());
 
+//            根据查询条件去获取数据库中是否有此用户
             Manager one = managerService.getOne(queryWrapper);
 
             if(Objects.isNull(one)){

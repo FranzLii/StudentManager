@@ -30,11 +30,11 @@ new FormModel {
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button2"
-				"text": "fresh"
+				"text": "刷新"
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "button2MouseClicked", true ) )
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 15, 15 )
+			"location": new java.awt.Point( 10, 15 )
 			"size": new java.awt.Dimension( 725, 185 )
 		} )
 	}

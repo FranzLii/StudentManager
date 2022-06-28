@@ -74,7 +74,6 @@ new FormModel {
 				name: "button5"
 				"text": "修改选中学生信息"
 				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "button5MouseReleased", true ) )
-				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "button1MouseClicked", true ) )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "button6"

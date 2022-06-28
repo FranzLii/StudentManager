@@ -7,11 +7,13 @@ package cn.ingachi.gui;
 import cn.ingachi.dto.GradeDto;
 import cn.ingachi.entity.Major;
 import cn.ingachi.service.MajorService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.*;
@@ -22,10 +24,10 @@ import javax.swing.table.DefaultTableModel;
  * @author unknown
  */
 @Component
+@Slf4j
 public class MajorManager extends JFrame {
     public MajorManager() {
         initComponents();
-//        setVisible(true);
     }
 
     int selectedRows[] = {};
@@ -37,20 +39,25 @@ public class MajorManager extends JFrame {
     MajorAdd majorAdd;
 
     public void initTable() {
-        List<Major> list = majorService.list();
-        Vector columnNames = new Vector();
-        Vector rowData = new Vector();
         scrollPane1 = new JScrollPane();
+//        从数据库中获取整个专业列表
+        List<Major> list = majorService.list();
+
+        Vector columnNames = new Vector();
         columnNames = new Vector<>();
         columnNames.add("专业id");
         columnNames.add("专业名称");
-        System.out.println(list);
+        Vector rowData = new Vector();
+//        System.out.println(list);
+//        将列表中各个元素添加至row，添加至rowdata中
         for (Major major : list) {
             Vector<java.io.Serializable> row = new Vector<>();
             row.add(major.getId());
             row.add(major.getName());
             rowData.add(row);
         }
+
+//        将表设置为不可编辑与拖动
         table1.setModel(new DefaultTableModel(rowData, columnNames) {
             public boolean isCellEditable(int row, int column) {
                 return false;
@@ -58,6 +65,7 @@ public class MajorManager extends JFrame {
         });
     }
 
+//    每次鼠标移开的时候获取表中选中的行
     private void table1MouseReleased(MouseEvent e) {
         selectedRows = table1.getSelectedRows();
     }
@@ -70,10 +78,10 @@ public class MajorManager extends JFrame {
         majorAdd.setVisible(true);
     }
 
+//    获取上述选中的列的ID，通过数据库的方法将他删除
     private void button5MouseReleased(MouseEvent e) {
         for (int selectedRow : selectedRows) {
             majorService.removeById(Long.valueOf(table1.getValueAt(selectedRow, 0).toString()));
-//            log.warn("删除 =====>" + Long.valueOf(table1.getValueAt(selectedRow, 0).toString()));
         }
         initTable();
     }
@@ -126,8 +134,6 @@ public class MajorManager extends JFrame {
         button5.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
-                button1MouseReleased(e);
-                button5MouseReleased(e);
                 button5MouseReleased(e);
             }
         });

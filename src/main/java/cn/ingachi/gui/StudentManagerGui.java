@@ -80,6 +80,7 @@ public class StudentManagerGui extends JFrame {
     public StudentManagerGui() {
         initComponents();
         setTimer(label6);
+//        setVisible(true);
     }
 
     private void setTimer(JLabel time) {
@@ -235,7 +236,14 @@ public class StudentManagerGui extends JFrame {
     }
 
     private void button5MouseReleased(MouseEvent e) {
+        if (selectedRows.length > 1) {
+            JOptionPane.showMessageDialog(this, "一次只能修改一个学生信息", "提示", JOptionPane.ERROR_MESSAGE);
+        } else {
+            int selectedRow = selectedRows[0];
 
+            studentModifyAndAdd.initInformation(Long.valueOf(String.valueOf(table1.getValueAt(selectedRow, 0))));
+            studentModifyAndAdd.setVisible(true);
+        }
     }
 
     private void button5MouseClicked(MouseEvent e) {
@@ -408,10 +416,6 @@ public class StudentManagerGui extends JFrame {
         //---- button5 ----
         button5.setText("\u4fee\u6539\u9009\u4e2d\u5b66\u751f\u4fe1\u606f");
         button5.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                button1MouseClicked(e);
-            }
             @Override
             public void mouseReleased(MouseEvent e) {
                 button5MouseReleased(e);

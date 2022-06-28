@@ -56,10 +56,6 @@ public class StudentAdd extends JFrame {
     }
 
     private void button1MouseClicked(MouseEvent e) {
-
-    }
-
-    private void button1MouseReleased(MouseEvent e) {
         try {
             Student student = new Student();
             student.setId(Integer.valueOf(textField3.getText()));
@@ -67,9 +63,11 @@ public class StudentAdd extends JFrame {
             student.setAge(Integer.valueOf(textField2.getText()));
             student.setSex((String) comboBox1.getSelectedItem());
             String classesName = (String) comboBox2.getSelectedItem();
+
             LambdaQueryWrapper<Classes> queryWrapper = new LambdaQueryWrapper<>();
             queryWrapper.eq(Classes::getClassName, classesName);
             Classes one = classesService.getOne(queryWrapper);
+
             Integer cid = one.getId();
             student.setCid(cid);
             studentService.save(student);
@@ -80,6 +78,7 @@ public class StudentAdd extends JFrame {
             ex.printStackTrace();
         }
     }
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents

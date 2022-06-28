@@ -49,7 +49,6 @@
     </select>
 
     <select id="getScoreNamesByClassId" resultType="java.lang.String">
-
         SELECT
             DISTINCT	sc.name
         FROM

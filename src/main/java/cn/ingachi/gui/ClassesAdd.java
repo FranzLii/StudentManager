@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import javax.swing.*;
 import javax.swing.GroupLayout;
@@ -73,6 +74,7 @@ public class ClassesAdd extends JFrame {
     }
 
     public void initCombox1(String majorName){
+        comboxSelectItem1 = new String[]{};
         Integer majorId = majorList.stream().filter(iter -> iter.getName().equals(majorName)).findFirst().get().getId();
         LambdaQueryWrapper<MajGrad> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(MajGrad::getMid,majorId);

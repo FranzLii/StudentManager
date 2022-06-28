@@ -32,8 +32,10 @@ public class MajorAdd extends JFrame {
     private void button1MouseReleased(MouseEvent e) {
         Major major = new Major();
         major.setName(textField1.getText());
+//        先将数据保留至数据库，隐藏当前界面
         majorService.save(major);
         this.setVisible(false);
+
         majorManager.initTable();
     }
 
